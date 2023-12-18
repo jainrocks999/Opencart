@@ -5,27 +5,24 @@ import {
     heightPercentageToDP as hp
 } from 'react-native-responsive-screen';
 import Icon from "react-native-vector-icons/AntDesign"
-
-const Button = ({ name,title, onFocus, ...props }) => {
+const Button = ({ name, title, onFocus, ...props }) => {
     const [isFocused, setIsfocused] = useState(true)
     console.log(isFocused)
     return (
         <TouchableOpacity
             style={{
                 height: hp('7%'),
-                marginBottom: hp('8%'),
-                marginVertical: hp('2%'),
+                marginVertical: hp('3%'),
                 marginHorizontal: wp('3%'),
-                backgroundColor: isFocused ? '#0f3a8d' : '#0d52d6',
-                elevation: 5,
+                backgroundColor: isFocused ? '#0f3a8d':'#0d52d6',
                 flexDirection: 'row',
                 borderRadius: hp('.50%'),
-                flexDirection: 'row',
-                justifyContent: 'center'
+                flexDirection:'row',
+                justifyContent:'center',
             }}
             activeOpacity={1}
             {...props}
-            onFocus={() => { setIsfocused(true) }}
+            onFocus={() => { setIsfocused(true)}}
             onBlur={() => setIsfocused(false)}
         >
             <Text
@@ -37,12 +34,8 @@ const Button = ({ name,title, onFocus, ...props }) => {
                     alignSelf: "center",
                 }}
             >Register</Text>
-
-
         </TouchableOpacity>
     )
 }
-
 export default Button
-
 const styles = StyleSheet.create({})

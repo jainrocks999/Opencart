@@ -16,11 +16,11 @@ import BottumTab from '../../../compoents/BottumTab';
 const Cart = ({ navigation }) => {
   const dispatch = useDispatch();
   const data = useSelector(state => state.data.ViewCart);
-  console.log('Data:',data);
+  console.log('Data:', data);
   let total = 0;
   useEffect(() => {
-    getItems();
-  }, [data]);
+    getItems(); 9
+  }, []);
   const getItems = async () => {
     const token = await AsyncStorage.getItem('token');
     try {
@@ -32,7 +32,7 @@ const Cart = ({ navigation }) => {
       console.error('Error fetching cart items:', error);
     }
   };
-    const cartRemove = async (id) => {
+  const cartRemove = async (id) => {
     const token = await AsyncStorage.getItem('token');
     var myHeaders = new Headers();
     myHeaders.append("Cookie", "OCSESSID=0f38945159e6b05b73d74b4b9e; currency=USD");
@@ -47,19 +47,21 @@ const Cart = ({ navigation }) => {
     fetch(`https://ecom.forebearpro.co.in/upload/index.php?route=api/sale/cart.remove&api_token=${token}`, requestOptions)
       .then(response => response.text())
       .then(result => console.log(result))
-      .catch(error => console.log('error',error));
+      .catch(error => console.log('error', error));
   };
   const totalAmount2 = () => {
     let total = 0
-    data.total((item,index) => {
-      const pri = item.price.replace(/\$/g,'')
+    data != undefined || data != null ?
+    data?.map((item, index) => {
+      const pri = item?.total.replace(/\$/g, '')
       total = total + parseInt(pri)
     }
-    )
-    console.log('Total Amount:', total);
+    ) 
+    : null
+    console.log('tyhtittit', JSON.stringify(data));
     return total
   }
-  const incrementQuantity = (itemId) =>{
+  const incrementQuantity = (itemId) => {
     setNewData((prevData) =>
       prevData.map((item, index) =>
         index === itemId
@@ -96,6 +98,14 @@ const Cart = ({ navigation }) => {
       token: token,
       id: item.id,
       navigation,
+    });
+  };
+  const addCart = async (id) => {
+    const token = await AsyncStorage.getItem('token');
+    dispatch({
+      type: 'openCart/fetchAddcart',
+      token: token,
+      id
     });
   };
   const [newData, setNewData] = useState([]);
@@ -137,7 +147,8 @@ const Cart = ({ navigation }) => {
                         fontSize: wp(4),
                         fontWeight: '600',
                       }}>
-                      {he.decode(item.name)}
+                      {(item.name)}
+                      {/* {he.decode} */}
                     </Text>
                     <View style={{ flexDirection: 'row', marginVertical: wp(1) }}>
                       <Text
@@ -147,7 +158,7 @@ const Cart = ({ navigation }) => {
                           color: 'black',
                           fontSize: wp(4),
                         }}>
-                        {item.price}
+                        {item.total}
                       </Text>
                       <Text
                         style={{
@@ -161,7 +172,7 @@ const Cart = ({ navigation }) => {
                         {' '}
                         $500
                       </Text>
-                      <Text
+                      {/* <Text
                         style={{
                           marginTop: '2%',
                           fontWeight: '800',
@@ -170,7 +181,7 @@ const Cart = ({ navigation }) => {
                           marginLeft: '5%',
                         }}>
                         65%
-                      </Text>
+                      </Text> */}
                     </View>
                     <Text style={{ marginLeft: '3%', color: 'grey' }}>
                       14 days return policy
@@ -190,20 +201,21 @@ const Cart = ({ navigation }) => {
                         <TouchableOpacity
                           onPress={() => decrementQuantity(index)}
                           style={{
-                            height: '100%',
-                            width: hp(4),
+                            height: hp(2.5),
+                            width: hp(2.5),
                             alignItems: 'center',
+                            borderWidth: 1,
                             justifyContent: 'center',
-                            backgroundColor: '#e6f0f2',
                             borderRadius: wp(1),
                           }}>
-                          {item.quantity >= 2 ? (
-                            <Entypo name="minus" size={wp(4.5)} />
+                          <Entypo name="minus" size={wp(4.5)} />
+                          {/* {item.quantity >= 2 ? (
                           ) : (
                             <Mat name="delete-outline" size={wp(6.5)} />
-                          )}
+                          )} */}
                         </TouchableOpacity>
                       </View>
+
                       <Text style={{ fontSize: wp(4), fontWeight: '600' }}>
                         {item.quantity}
                       </Text>
@@ -217,7 +229,7 @@ const Cart = ({ navigation }) => {
                           borderRadius: wp(1),
                         }}>
                         <TouchableOpacity
-                          onPress={() => incrementQuantity(index)}
+                          onPress={() => addCart(item?.product_id)}
                           style={styles.quantity}>
                           <Entypo name="plus" size={wp(4.5)} />
                         </TouchableOpacity>
@@ -226,7 +238,6 @@ const Cart = ({ navigation }) => {
                   </View>
                   <TouchableOpacity
                     onPress={() => {
-
                       cartRemove(item.cart_id)
                     }}
                     style={{ width: wp(55), height: hp(0) }}>

@@ -2,7 +2,7 @@ import { View, Text, Image, StyleSheet, Keyboard, ScrollView, TouchableOpacity }
 import React, { useEffect, useState } from 'react'
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen'
 import Input from '../../compoents/Input'
-import Button2 from'../../compoents/Button2'
+import Button2 from '../../compoents/Button2'
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
 const SignUp = () => {
@@ -21,18 +21,22 @@ const SignUp = () => {
     Keyboard.dismiss();
     let isValid = true;
     if (!inputs.email) {
-      handleError('Please input email', 'email');
+      handleError('Please input email address', 'email');
       isValid = false;
     } else if (!inputs.email.match(/\S+@\S+\.\S+/)) {
       handleError('Please input a valid email', 'email');
       isValid = false;
     }
-    if (!inputs.fullname) {
-      handleError('Please input fullname', 'fullname');
+    if (!inputs.firstname) {
+      handleError('Please input firstname', 'firstname');
       isValid = false;
     }
-    if (!inputs.phone) {
-      handleError('Please input phone number', 'phone');
+    if (!inputs.lastname) {
+      handleError('Please input lastname', 'lastname');
+      isValid = false;
+    }
+    if (!inputs.telephone) {
+      handleError('Please input Mobile number', 'telephone');
       isValid = false;
     }
     if (!inputs.password) {
@@ -63,7 +67,7 @@ const SignUp = () => {
   const handleError = (error, input) => {
     setErrors(prevState => ({ ...prevState, [input]: error }));
   };
-  useEffect(() =>{
+  useEffect(() => {
     dispatch({
       type: 'openCart/genrateToken',
     })
@@ -77,7 +81,7 @@ const SignUp = () => {
         <Text style={styles.login}>Register</Text>
         <Text style={styles.info}>Please enter the details below to continue</Text>
       </View>
-      <ScrollView showsVerticalScrollIndicator={false} style={{ marginHorizontal: '3%', }}>
+      <View showsVerticalScrollIndicator={false} style={{ marginHorizontal: '3%', }}>
         <Input
           onChangeText={text => handleOnchange(text, 'firstname')}
           onFocus={() => handleError(null, 'firstname')}
@@ -107,8 +111,8 @@ const SignUp = () => {
           onChangeText={text => handleOnchange(text, 'telephone')}
           onFocus={() => handleError(null, 'telephone')}
           iconName="phone-outline"
-          label="Telephone Number"
-          placeholder="Enter your telephone no"
+          label="Mobile Number"
+          placeholder="Enter your Mobile no"
           error={errors.telephone}
         />
         <Input
@@ -120,29 +124,29 @@ const SignUp = () => {
           error={errors.password}
           password
         />
-       </ScrollView>
-       <View style={{height: hp('17%')}}>
-        <Button2 title="Register"onPress={validate} />
-       
-          <Text style=
-            {{
-          
-              alignSelf: 'center',
-             marginTop:-40,
-             justifyContent:'center',
-             flexDirection:'row'
-            }}>Already have an account ? <TouchableOpacity><Text onPress={() => navigation.navigate('Login')}
-              style=
-              {{
-              
-                fontWeight:'bold',
-                color: '#0f3a8d',
-           
-               
-              }}
-            > Login</Text></TouchableOpacity></Text>
-        </View>
-     
+      </View>
+
+      <Button2 title="Register" onPress={validate} />
+
+      <View style={{
+        alignContent: 'center',
+        alignItems: "center",
+        textAlign: 'center',
+       marginBottom:15,
+        justifyContent: "center",
+        flexDirection: 'row'
+      }}>
+        <Text
+        >Already have an account ?
+        </Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+          <Text style={{ color: '#0f3a8d', }}> Login!</Text>
+        </TouchableOpacity>
+
+      </View>
+
+
+
     </View>
   )
 
@@ -162,12 +166,12 @@ const styles = StyleSheet.create({
   },
   infoTextContainer: {
     marginHorizontal: '5%',
-    marginVertical: hp(3), // Updated to a number
+    marginVertical: hp(2), // Updated to a number
   },
   login: {
-
+    fontSize:20,
     fontWeight: 'bold',
-    color: 'grey'
+    color: 'black'
   },
   img: {
     height: '100%',
@@ -175,7 +179,6 @@ const styles = StyleSheet.create({
     resizeMode: 'contain'
   },
   info: {
-
     fontWeight: '400',
     color: 'grey'
   }

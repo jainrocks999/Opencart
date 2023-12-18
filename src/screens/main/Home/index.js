@@ -263,17 +263,17 @@ const Home = () => {
 
             return (
               <View style={styles.cardView}>
-                <TouchableOpacity
-                  onPress={() => { addWishList(item.product_id) }}
-                >
-                  <AntDesign name="hearto" style={styles.iconic} />
-                </TouchableOpacity>
-                <View style={styles.imgcontainer}>
+                  <View style={styles.imgcontainer}>
                   <TouchableOpacity
                     onPress={() => handleDetail(item.product_id)}
                   >
                     <Image style={styles.img} source={{ uri: item.image }} />
                   </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => { addWishList(item.product_id)}}
+                >
+                  <AntDesign name="hearto" style={styles.iconic} />
+                </TouchableOpacity>
                 </View>
                 <Text style={styles.txt2}>{decodedProductName}</Text>
                 <View style={{ marginTop: 15, marginHorizontal: 5 }}>
@@ -291,8 +291,8 @@ const Home = () => {
                           {
                             textDecorationLine: 'line-through',
                             fontSize: wp(3),
-                            fontWeight: 'bold',
-                            marginLeft: wp(1),
+                            marginTop:2,
+                            fontWeight: 'bold',                           
                             color: 'red',
                           },
                         ]}
@@ -307,11 +307,12 @@ const Home = () => {
                   )}
                   <Text
                     style={[
-                      styles.Price,
+       
                       {
                         fontSize: wp(3),
+                        marginTop:2,
                         fontWeight: 'bold',
-                        marginLeft: wp(1),
+                
                         color: 'grey',
                       },
                     ]}

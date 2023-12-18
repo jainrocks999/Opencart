@@ -240,7 +240,7 @@ const ProductList = ({ navigation }) => {
 
   return (
     <View style={{ flex: 1, backgroundColor: 'white' }}>
-      <View style={styles.container}>
+      <View style={styles.conatainer}>
         <View style={styles.header}>
           <View
             style={{
@@ -281,69 +281,70 @@ const ProductList = ({ navigation }) => {
               const decodedProductName = he.decode(item.name);
               return (
                 <View style={styles.cardView}>
-                <TouchableOpacity
-                  onPress={() => { addWishList(item.product_id) }}
-                >
-                  <AntDesign name="hearto" style={styles.iconic} />
-                </TouchableOpacity>
-                <View style={styles.imgcontainer}>
-                  <TouchableOpacity
-                    onPress={() => handleDetails(item.product_id)}
-                  >
-                    <Image style={styles.img} source={{ uri: item.image }} />
-                  </TouchableOpacity>
-                </View>
-                <Text style={styles.txt2}>{decodedProductName}</Text>
-                <View style={{ marginTop: 15, marginHorizontal: 5 }}>
-                  <Text> {item.description} </Text>
-                </View>
-                <View style={styles.priceCOntainer}>
-                  {item.special ? (
-                    <>
+                  <View style={styles.imgcontainer}>
+                    <TouchableOpacity
+                      onPress={() => handleDetails(item.product_id)}
+                    >
+                      <Image style={styles.img} source={{ uri: item.image }} />
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => { addWishList(item.product_id) }}
+                    >
+                      <AntDesign name="hearto" style={styles.iconic} />
+                    </TouchableOpacity>
+                  </View>
+                  <Text style={styles.txt2}>{decodedProductName}</Text>
+                  <View style={{ marginTop: 15, marginHorizontal: 5 }}>
+                    <Text> {item.description} </Text>
+                  </View>
+                  <View style={styles.priceCOntainer}>
+                    {item.special ? (
+                      <>
+                        <Text style={[styles.Price, { color: 'black' }]}>
+                          {item.special}
+                        </Text>
+                        <Text
+                          style={[
+                            styles.Price,
+                            {
+                              textDecorationLine: 'line-through',
+                              fontSize: wp(3),
+                              fontWeight: 'bold',
+                              marginLeft: wp(1),
+                              color: 'red',
+                            },
+                          ]}
+                        >
+                          {item.price}
+                        </Text>
+                      </>
+                    ):(
                       <Text style={[styles.Price, { color: 'black' }]}>
-                        {item.special}
-                      </Text>
-                      <Text
-                        style={[
-                          styles.Price,
-                          {
-                            textDecorationLine: 'line-through',
-                            fontSize: wp(3),
-                            fontWeight: 'bold',
-                            marginLeft: wp(1),
-                            color: 'red',
-                          },
-                        ]}
-                      >
                         {item.price}
                       </Text>
-                    </>
-                  ) : (
-                    <Text style={[styles.Price, { color: 'black' }]}>
-                      {item.price}
+                    )}
+                    <Text
+                      style={[
+                        styles.Price,
+                        {
+                          fontSize: wp(3),
+                          fontWeight: 'bold',
+                          marginTop: 5,
+                          marginBottom: 10,
+                          color: 'grey',
+                        },
+                      ]}
+                    >
+                      Ex Tax: {item.tax}
                     </Text>
-                  )}
-                  <Text
-                    style={[
-                      styles.Price,
-                      {
-                        fontSize: wp(3),
-                        fontWeight: 'bold',
-                        marginLeft: wp(1),
-                        color: 'grey',
-                      },
-                    ]}
-                  >
-                    Ex Tax: {item.tax}
-                  </Text>
+                  </View>
                 </View>
-              </View>
               );
             }}
           />
         </ScrollView>
       </View>
-      <BottumTab />
+      <BottumTab/>
     </View>
   );
 };

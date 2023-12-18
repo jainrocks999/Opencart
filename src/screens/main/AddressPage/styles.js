@@ -199,7 +199,10 @@ export default StyleSheet.create({
   },
   errorText:{
     color:'red',
-    marginHorizontal:10
+    marginHorizontal:15,
+    marginTop:-10,
+marginBottom:10
+
 
   }
 });

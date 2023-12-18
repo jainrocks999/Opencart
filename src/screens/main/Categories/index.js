@@ -48,7 +48,7 @@ const Categories = ({ navigation }) => {
   const onHandleList = (name, value) => {
     setShow(prevState => ({ ...prevState, [name]: value }));
   };
-
+  
   return (
     <View style={{ flex: 1, backgroundColor: 'white' }}>
       <View style={{ flex: 1 }}>
@@ -63,16 +63,15 @@ const Categories = ({ navigation }) => {
             <Text style={{fontSize: wp(4.5), color: 'white' }}>Categories</Text>
           </View>
         </View>
-
         <ScrollView>
           <FlatList
             data={data}
             onEndReached={() => {}}
             onEndReachedThreshold={1}
             numColumns={2}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={({ item, index }) => {
-              if (index === 1) {
+            keyExtractor={(item, index) =>index.toString()}
+            renderItem={({ item, index }) =>{
+              if (index === 1){
               }
               // Decode the HTML entities within the category name
               const decodedCategoryName = he.decode(item.name);
@@ -91,7 +90,7 @@ const Categories = ({ navigation }) => {
           />
         </ScrollView>
       </View>
-      <BottumTab />
+      <BottumTab/>
     </View>
   );
 };

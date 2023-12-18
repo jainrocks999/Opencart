@@ -45,6 +45,7 @@ const Login = () => {
             alert('Invalid email or password.');
         }
     };
+    
     const toke = useSelector(state => state.data.token)
     console.log(typeof (toke))
 
@@ -74,14 +75,14 @@ const Login = () => {
     return (
         <View style={styles.container}>
             <View style={styles.logoConatainer}>
-                <Image style={styles.img}   source={require('../../assests/ecom.png')}/>
+                <Image style={styles.img} source={require('../../assests/ecom.png')} />
             </View>
-          
-                <View style={styles.infoTextContainer}>
-                    <Text style={styles.login}>Login</Text>
-                    <Text style={styles.info}>Please enter the details below to continue</Text>
-                </View>
-                <View style={{marginHorizontal:15}}>
+
+            <View style={styles.infoTextContainer}>
+                <Text style={styles.login}>Login</Text>
+                <Text style={styles.info}>Please enter the details below to continue</Text>
+            </View>
+            <View style={{ marginHorizontal: 15 }}>
                 <Input
                     onChangeText={(input) => { handleInput('email', input) }}
                     value={inputs.email}
@@ -101,35 +102,40 @@ const Login = () => {
                     error={errors.password}
                     password
                 />
-                </View>
-                {!isValid && (
-                    <Text style={styles.errorText}>
-                        Please enter a valid email and password.
-                    </Text>
-                )}
+            </View>
+            {!isValid && (
+                <Text style={styles.errorText}>
+                    Please enter a valid email and password.
+                </Text>
+            )}
+            <View style={{ marginTop: 50 }}>
                 <Button onPress={() => {
                     handleValidation()
                 }} name='Login' />
-                <Text onPress={() => navigation.navigate('Forget')} style={{
-                    alignSelf: 'flex-end',
-                    marginRight: '5%',
-                    fontSize: hp('2.4%'),
-                    color: 'grey'
-                }}>Forgot password ?</Text>
+            </View>
+            <Text onPress={() => navigation.navigate('Forget')} style={{
+                alignSelf: 'flex-end',
+                marginRight: '5%',
+                fontSize: hp('2.4%'),
+                color: 'grey',
+                marginTop: 10
+            }}>Forgot password ?</Text>
+
+            <View style={{
+                alignContent: 'center',
+                alignItems: "center",
+                textAlign: 'center',
+                marginVertical: hp('5%'),
+                justifyContent: "center",
+                flexDirection: 'row'
+            }}>
                 <Text
-                    style={{
-                        alignSelf: 'center',
-                        marginVertical: hp('5%'),
-                        fontSize: hp('2.5%'),
-                        color: 'grey',
-                    }}
                 >Dont't have an account ?
-                    <TouchableOpacity>
-
-                        <Text onPress={() => navigation.navigate('Register')} style={{ color: '#0f3a8d', fontSize: hp(2.4), fontWeight: 'bold' }}> Sign Up!</Text>
-                    </TouchableOpacity></Text>
-
-            
+                </Text>
+                <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+                    <Text style={{ color: '#0f3a8d', }}> Sign Up!</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     )
 }
@@ -142,10 +148,9 @@ const styles = StyleSheet.create({
         backgroundColor: 'white'
     },
     logoConatainer: {
-      
+        marginTop:20,
         width: '100%',
-        height: hp(20), // Updated to a number
-     
+        height: hp(15), // Updated to a number
     },
     infoTextContainer: {
         marginHorizontal: '5%',
@@ -168,7 +173,8 @@ const styles = StyleSheet.create({
     },
     errorText: {
         color: 'red',
-        marginTop: hp(1), // Updated to a number
+        marginHorizontal: '5%',
+
     },
 });
 

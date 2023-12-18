@@ -140,6 +140,10 @@ function* fetchaddcart(action) {
     if (successValue == 'Success: You have modified your shopping cart!') {
         alert('Item Add Successfully')
         yield put({
+            type: 'openCart/fetchViewCart',
+            token: action.token,
+          });
+        yield put({
             type: 'openCart/fetchAddcartSuccess',
             payload: action.id
         })
@@ -437,31 +441,32 @@ function* fetchAddwishList(action) {
     }
 }
 function* fetchViewcart(action) {
+  
 
-   try{ const res = yield call(Api.ViewCart, action.token)
- 
+   try{ 
+    const token = yield AsyncStorage.getItem('token');
+    const res = yield call(Api.ViewCart, token)
 
      const product = res?.products;
-     console.log(product)
+    alert(JSON.stringify(product))
 
-    if (product.length >= 0) {
+    if (product?.length >= 0) {
         console.log('insert cart');
-
         yield put({
             type: 'openCart/fetchViewcartSuccess',
             payload: product
         })
-
+        
     }
     else {
         yield put({
             type: 'openCart/fetchViewcartError'
         })
-    }}
+    }
+}
     catch(err){
         yield put({
-            type: 'openCart/fetchViewcartError'
-        })
+            type: 'openCart/fetchViewcartError'})
         console.log('this is error',err)
     }
 }

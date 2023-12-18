@@ -23,7 +23,7 @@ const Card = ({item,onPress=()=>{}, sendData}) => {
     });
     console.log('CALLED');
   };
-
+  
   const RemoveWishList=async ()=>{
     console.log('ccc')
     const token = await AsyncStorage.getItem('token');

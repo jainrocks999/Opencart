@@ -296,7 +296,7 @@ const Profile = () => {
                       fontWeight: 'bold',
                       color: 'black',
                     }}>
-                    Add Address
+                    Addresses
                   </Text>
                 </TouchableOpacity>
               </View>

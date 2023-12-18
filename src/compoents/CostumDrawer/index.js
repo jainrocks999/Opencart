@@ -22,7 +22,7 @@ const CostumDrawer = props => {
   //e6f0f2
   return (
     <View
-      Style={{flex: 1, backgroundColor: '#e6f0f2'}}>
+      Style={{flex: 1, backgroundColor:'#e6f0f2'}}>
       <View
         style={{width: '100%', backgroundColor: '#18314F', height: hp(15)}}>
         <View style={styles.dp}>
@@ -49,12 +49,12 @@ const CostumDrawer = props => {
               alignItems: 'center',
               left: '15%',
             }}>
-            <Icon name="home" size={wp(6)} />
+            <Icon name="home" size={wp(6)}/>
             <TouchableOpacity style={{
               flexDirection: 'row',
               height: '100%',
               alignItems: 'center',
-              left: '15%',
+              left:'15%',
             }} >
             <Text onPress={() => navigation.navigate('home')}
               style={{fontSize: wp(4), fontWeight: '500', marginLeft: '5%'}}>
@@ -66,12 +66,12 @@ const CostumDrawer = props => {
         <View style={[styles.DrawerItem]}>
           <View
             style={{
-              flexDirection: 'row',
+              flexDirection:'row',
               height: '100%',
-              alignItems: 'center',
+              alignItems:'center',
               left: '15%',
             }}>
-            <Feather name="grid" size={wp(6)} />
+            <Feather name="grid" size={wp(6)}/>
             <TouchableOpacity  onPress={() => navigation.navigate('Categories')} >
             <Text
               style={{fontSize: wp(4), fontWeight: '500', marginLeft: '5%'}}>
@@ -80,7 +80,7 @@ const CostumDrawer = props => {
             </TouchableOpacity>
           </View>
         </View>
-        <View style={[styles.DrawerItem]}>
+        {/* <View style={[styles.DrawerItem]}>
           <View
             style={{
               flexDirection: 'row',
@@ -88,13 +88,13 @@ const CostumDrawer = props => {
               alignItems: 'center',
               left: '15%',
             }}>
-            <Check name="sticker-check-outline" size={wp(7)} />
+            <Check name="sticker-check-outline" size={wp(7)}/>
             <Text
               style={{fontSize: wp(4), fontWeight: '500', marginLeft: '5%'}}>
               My Orders
             </Text>
           </View>
-        </View>
+        </View> */}
         <View style={[styles.DrawerItem]}>
           <View
             style={{
@@ -120,7 +120,7 @@ const CostumDrawer = props => {
             }}>
             <Foundation name="telephone" size={wp(7.5)} />
             <Text
-              style={{fontSize: wp(4), fontWeight: '500', marginLeft: '7%'}}>
+              style={{fontSize: wp(4),fontWeight: '500', marginLeft: '7%'}}>
               Contact Us
             </Text>
           </View>
@@ -133,7 +133,7 @@ const CostumDrawer = props => {
               alignItems: 'center',
               left: '19%',
             }}>
-            <Foundation name="power" size={wp(7.5)} />
+            <Foundation name="power" size={wp(7.5)}/>
             <Text
             onPress={async()=>{
               await AsyncStorage.clear()
@@ -146,9 +146,7 @@ const CostumDrawer = props => {
         </View>
         <View
           style={{
-           
-            backgroundColor: '#18314F',
-            
+            backgroundColor:'#18314F',
             height: hp(100),
             width: '100%',
           }}>
@@ -172,7 +170,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     width: Platform.OS === 'ios' ? '75%' : '65%',
   },
-  img: {
+  img:{
     height: wp(22),
     width: wp(22),
     borderRadius: wp(5.5),

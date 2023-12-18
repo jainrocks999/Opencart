@@ -45,7 +45,7 @@ export default function Myaddress() {
       showsVerticalScrollIndicator={false}>
         <View style={{ marginHorizontal: 20 , marginTop:20 }}>
           <Text style={{ fontSize: 24, fontWeight: 'bold' }}>Your Addresses</Text>
-        </View>
+       
         <TouchableOpacity
 
           onPress={() => {
@@ -54,16 +54,17 @@ export default function Myaddress() {
           style={{
             marginTop: '3%',
             flexDirection: 'row', justifyContent: 'space-between',
-            padding: 10, marginHorizontal: 10, borderTopWidth: 0.5, borderBottomWidth: 0.5
+            padding: 10, borderTopWidth: 0.5, borderBottomWidth: 0.5,
           }}>
-          <Text style={{ fontSize: 18 }}>
+          <Text style={{ fontSize: 18, textDecorationLine:'underline',marginHorizontal: -8 ,   }}>
             Add a new address
           </Text>
           <Text style={{ fontSize: 15 }}></Text>
         </TouchableOpacity>
+            <Text style={{ fontSize: 18, fontWeight: '700',  marginVertical: 20 }}>Saved Addresses</Text>
+            </View>
         <View style={{ flex: 1 }}>
           <View style={styles.CardContainer}>
-            <Text style={{ fontSize: 18, fontWeight: '700', marginLeft: 10, marginVertical: 10 }}>Personal Addresses</Text>
 
             <FlatList
               data={addresslist}
@@ -77,16 +78,16 @@ export default function Myaddress() {
                     <Text>{item.address_1}</Text>
                     <Text>{item.city} {item.postcode} {item.country}</Text>
                     <Text>{item.country}</Text>
-                    <View style={{ flexDirection: 'row', marginTop: 15, }}>
+                    <View style={{ flexDirection: 'row', marginTop: 15, height:35 ,}}>
 
                       <TouchableOpacity
                         onPress={() => { alert('Edit') }}
-                        style={{ padding: 10, borderRadius: 10, backgroundColor: '#18314F' }}>
+                        style={{ padding: 10, borderRadius: 10, backgroundColor: '#18314F' ,justifyContent:'center'}}>
                         <Text style={{color:'white'}}>Edit</Text>
                       </TouchableOpacity>
                       <TouchableOpacity
                         onPress={() => { DeleteAddress(item.address_id) }}
-                        style={{ padding: 10, marginHorizontal: 30, borderRadius: 10, backgroundColor: '#18314F' }}>
+                        style={{ padding: 10, marginHorizontal: 30, borderRadius: 10, backgroundColor: '#18314F',justifyContent:'center' }}>
                         <Text style={{color:'white'}}>Remove</Text>
                       </TouchableOpacity>
 

@@ -33,6 +33,7 @@ useEffect(()=>{
             style={{
               height: hp(20),
               width: wp(60),
+              tintColor:'white'
             }}
             source={require('../../assests/ecom.png')}
           />

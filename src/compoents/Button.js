@@ -13,8 +13,8 @@ const Button = ({ name,title, onFocus, ...props }) => {
         <TouchableOpacity
             style={{
                 height: hp('7%'),
-                marginBottom: hp('8%'),
-                marginVertical: hp('2%'),
+               
+            
                 marginHorizontal: wp('3%'),
                 backgroundColor: isFocused ? '#0f3a8d' : '#0d52d6',
                 elevation: 5,
@@ -37,8 +37,6 @@ const Button = ({ name,title, onFocus, ...props }) => {
                     alignSelf: "center",
                 }}
             >Login</Text>
-
-
         </TouchableOpacity>
     )
 }

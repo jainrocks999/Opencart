@@ -57,7 +57,7 @@ import he from 'he';
   const [Time, settime] = useState("");
   const [Uploadfile, setuploadfile] = useState("");
   const [Timedate, settimedate] = useState("");
-  const [selectedDate, setSelectedDate] = useState('');
+  const [selectedDate, setSelectedDate]=useState('');
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
@@ -82,13 +82,17 @@ import he from 'he';
             size={wp(5.9)}
             color="white"
           />
-          <Text style={{ fontSize: wp(4.5), color: 'white', marginRight: 2 }}>Categories</Text>
+          <View style={{ 
+    width:wp(100),    paddingHorizontal: wp(2),}}>
+          <Text style={{ fontSize: wp(4.5), color: 'white',}}>Categories Detail</Text>
+          </View>
         </View>
+
       </View>
       <ScrollView contentContainerStyle={{ justifyContent:'center'}}>
         <View>
           <SliderBox
-            style={{ height: hp(50), width: wp(100), backgroundColor: 'white' }}
+            style={{ height: hp(40), width: wp('75%'),marginLeft:50, backgroundColor: 'white' }}
             images={img}
             resizeMode='contain'
             dotColor="#fddae8"
@@ -221,7 +225,7 @@ import he from 'he';
             />
           </View>
           <View style={{ marginHorizontal: 15, marginTop: 20, }}>
-            <Text style={{ fontWeight: '600', fontSize: 18, marginLeft: 10, marginVertical: 5 }}>Date</Text>
+            <Text style={{ fontWeight: '600', fontSize: 18, marginLeft: 10,marginVertical: 5 }}>Date</Text>
             <Datepicker
               style={{
                 width: 350,

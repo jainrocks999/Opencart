@@ -139,6 +139,7 @@ import { useDispatch, useSelector } from 'react-redux';
                         fontSize: wp(3),
                         fontWeight: 'bold',
                         marginLeft: wp(1),
+                        marginVertical:hp('1%'),
                         color: 'grey',
                       },
                     ]}
@@ -169,17 +170,7 @@ const styles = StyleSheet.create({
     width: '100%',
     marginEnd: 10,
   },
-  cardView: {
-    height: hp(30),
-    backgroundColor: '#e6f0f2',
-    marginVertical: wp(1),
-    width: wp(46),
-    marginHorizontal: wp(2),
-    borderRadius: wp(2),
-    shadowColor: 'black',
-    shadowOpacity: 0.05,
-    marginTop: 10,
-  },
+  
   txt: {
     fontSize: wp(4.5), color: 'white'
   },
@@ -208,7 +199,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: wp(3),
   },
   cardView: {
-    height: hp(53),
+   
     backgroundColor: '#e6f0f2',
     marginVertical: wp(1),
     width: wp(46),

@@ -13,7 +13,7 @@ const Input = ({
   const [hidePassword, setHidePassword] = React.useState(password);
   const [isFocused, setIsFocused] = React.useState(false);
   return (
-    <View style={{marginBottom: 20}}>
+    <View style={{marginBottom: 10}}>
       <Text style={style.label}>{label}</Text>
       <View
         style={[
@@ -51,7 +51,7 @@ const Input = ({
         )}
       </View>
       {error && (
-        <Text style={{marginTop: 7, color: COLORS.red, fontSize: 12}}>
+        <Text style={{marginTop:4, color: COLORS.red, fontSize: 10}}>
           {error}
         </Text>
       )}
@@ -65,7 +65,7 @@ const style = StyleSheet.create({
     color: COLORS.grey,
   },
   inputContainer: {
-    height: 55,
+    height: 50,
     backgroundColor: COLORS.light,
     flexDirection: 'row',
     paddingHorizontal: 15,

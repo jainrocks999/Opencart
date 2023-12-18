@@ -181,7 +181,7 @@ import {
     backgroundColor: '#0f3a8d',
   },
   cardView: {
-    height: hp(60),
+    height: hp(50),
     backgroundColor: '#e6f0f2',
     marginVertical: wp(1),
     width: wp(46),
@@ -216,13 +216,15 @@ import {
     height: wp(40),
     width: wp(40),
     alignSelf: 'center',
-    marginTop: hp(7),
+    marginTop: hp(5),
+    
   },
   imagecontainer: {
     height: wp(20),
     width: wp(30),
     alignSelf: 'center',
-    margin:10
+    margin:10,
+  
   },
   img: {
     height: '100%',
@@ -255,15 +257,13 @@ import {
     height: hp(3.5),
     borderColor: 'grey',
     alignSelf:'center',
-    marginTop:wp(2),
+    marginTop:hp(3),
     backgroundColor:'#0f3a8d'
   },
   priceCOntainer: {
-   
     alignItems: 'center',
- 
     //justifyContent:'space-between',
-    marginTop: hp(1),
+    marginTop: hp(2),
     alignSelf: 'center',
   },
   Price: {
@@ -291,10 +291,10 @@ import {
      top:-hp('69%'),
    },
     iconic:{
-      margin:10,
+      marginVertical:hp('-23%'),
     fontSize:wp(8),
     position:'absolute',
-    right:wp(3),
+
    
   },
 });

@@ -14,7 +14,7 @@ import CheckBox from '@react-native-community/checkbox';
 import { useDispatch } from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const Address = ({ navigation }) => {
+  const Address = ({ navigation }) => {
   const [FirstName, setFirstName] = useState('');
   const [LastName, setLastName] = useState('');
   const [Address1, setAddress1] = useState('');
@@ -37,7 +37,7 @@ const Address = ({ navigation }) => {
     country: '',
   });
 
-  const handleOnChangeText = (param, input) => {
+    const handleOnChangeText = (param, input) => {
     switch (param) {
       case 'firstName':
         setFirstName(input);
@@ -65,11 +65,11 @@ const Address = ({ navigation }) => {
     }
   };
 
-  const handleOnError = (param, msg) => {
+    const handleOnError = (param, msg) => {
     setError((prev) => ({ ...prev, [param]: msg }));
   };
 
-  const handleOnSubmit = () => {
+    const handleOnSubmit = () => {
     let valid = true;
     const validationErrors = {};
 
@@ -137,7 +137,7 @@ const Address = ({ navigation }) => {
     }
   };
 
-  const SaveAddress = async () => {
+    const SaveAddress = async () => {
     // navigation.navigate('Payment')
 
     const token = await AsyncStorage.getItem('token');
@@ -166,7 +166,7 @@ const Address = ({ navigation }) => {
       <Header />
       <ScrollView style={{marginTop:20}}>
       
-        {error.firstName && <Text style={styles.errorText}>{error.firstName}</Text>}
+       
         <Input
           placeholder="First Name*"
           getTxt={setFirstName}
@@ -176,12 +176,10 @@ const Address = ({ navigation }) => {
           }}
           error={error.firstName}
           input2={true}
+          onFocus={() => handleOnError('firstName', '')}/>
+          {error.firstName && <Text style={styles.errorText}>{error.firstName}</Text>}
 
-          onFocus={() => handleOnError('firstName', '')}
-        />
-
-
-        {error.lastName && <Text style={styles.errorText}>{error.lastName}</Text>}
+       
         <Input
           placeholder="Last Name*"
           getTxt={setLastName}
@@ -194,10 +192,11 @@ const Address = ({ navigation }) => {
 
           onFocus={() => handleOnError('lastName', '')}
         />
+         {error.lastName && <Text style={styles.errorText}>{error.lastName}</Text>}
 
      
 
-        {error.address1 && <Text style={styles.errorText}>{error.address1}</Text>}
+       
         <Input
           placeholder="Address 1*"
           getTxt={setAddress1}
@@ -209,8 +208,9 @@ const Address = ({ navigation }) => {
           error={error.address1}
           onFocus={() => handleOnError('address1', '')}
         />
+         {error.address1 && <Text style={styles.errorText}>{error.address1}</Text>}
 
-        {error.address2 && <Text style={styles.errorText}>{error.address2}</Text>}
+       
         <Input
           placeholder="Address 2"
           getTxt={setAddress2}
@@ -222,8 +222,9 @@ const Address = ({ navigation }) => {
           error={error.address2}
           onFocus={() => handleOnError('address2', '')}
         />
+         {error.address2 && <Text style={styles.errorText}>{error.address2}</Text>}
 
-        {error.city && <Text style={styles.errorText}>{error.city}</Text>}
+        
         <Input
           placeholder="Locality/Town*"
           getTxt={setCity}
@@ -235,8 +236,9 @@ const Address = ({ navigation }) => {
           error={error.city}
           onFocus={() => handleOnError('city', '')}
         />
+        {error.city && <Text style={styles.errorText}>{error.city}</Text>}
 
-        {error.pincode && <Text style={styles.errorText}>{error.pincode}</Text>}
+       
         <Input
           placeholder="Pin Code*"
           getTxt={setPincode}
@@ -248,8 +250,9 @@ const Address = ({ navigation }) => {
           error={error.pincode}
           onFocus={() => handleOnError('pincode', '')}
         />
+         {error.pincode && <Text style={styles.errorText}>{error.pincode}</Text>}
 
-        {error.country && <Text style={styles.errorText}>{error.country}</Text>}
+       
         <Input
           placeholder="Country*"
           getTxt={setCountry}
@@ -261,6 +264,7 @@ const Address = ({ navigation }) => {
           error={error.country}
           onFocus={() => handleOnError('country', '')}
         />
+         {error.country && <Text style={styles.errorText}>{error.country}</Text>}
 
         <View style={styles.contact}>
           <Text style={styles.cont}>SAVE ADDRESS AS</Text>

@@ -21,7 +21,7 @@ export default StyleSheet.create({
         alignItems:'center'
     },
     cardView: {
-        height: hp(30),
+     
         backgroundColor: '#e6f0f2',
         marginVertical: wp(1),
         width: wp(46),
@@ -48,11 +48,11 @@ export default StyleSheet.create({
         height: wp(30),
         width: wp(40),
         alignSelf: 'center',
-        marginTop: wp(10),
+        marginTop: hp(1),
       },
       txt2: {
         alignSelf: 'center',
-        marginTop: wp(10),
+        marginVertical: hp(2),
         fontSize: wp(4),
         fontWeight: '600',
         color: 'black',
